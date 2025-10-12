@@ -1,0 +1,8 @@
+apiVersion: devenv.example.com/v1alpha1
+kind: DevEnvironment
+metadata:
+  name: my-first-env
+  namespace: default
+spec:
+  image: nginx:latest
+  replicas: 2

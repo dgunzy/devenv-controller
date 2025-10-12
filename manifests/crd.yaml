@@ -33,6 +33,12 @@ spec:
                 description: Number of replicas
                 format: int32
                 type: integer
+              targetNamespace:
+                description: |-
+                  Target namespace for the environment (will be created if it doesn't exist)
+                  If not specified, defaults to "devenv-{metadata.name}"
+                nullable: true
+                type: string
             required:
             - image
             type: object

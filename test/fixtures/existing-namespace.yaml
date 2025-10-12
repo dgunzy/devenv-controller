@@ -1,0 +1,9 @@
+apiVersion: devenv.example.com/v1alpha1
+kind: DevEnvironment
+metadata:
+  name: test-existing
+  namespace: default
+spec:
+  image: nginx:alpine
+  replicas: 1
+  targetNamespace: devenv-test-existing  # Use existing namespace

@@ -22,6 +22,11 @@ pub struct DevEnvironmentSpec {
 
     /// Optional database type
     pub database: Option<String>,
+
+    /// Target namespace for the environment (will be created if it doesn't exist)
+    /// If not specified, defaults to "devenv-{metadata.name}"
+    #[serde(rename = "targetNamespace")]
+    pub target_namespace: Option<String>,
 }
 
 fn default_replicas() -> i32 {

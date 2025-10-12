@@ -1,0 +1,9 @@
+apiVersion: devenv.example.com/v1alpha1
+kind: DevEnvironment
+metadata:
+  name: test-new
+  namespace: default
+spec:
+  image: nginx:alpine
+  replicas: 1
+  # No targetNamespace - will auto-create devenv-test-new

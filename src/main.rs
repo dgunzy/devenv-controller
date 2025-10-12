@@ -1,10 +1,4 @@
-mod crd;
-mod errors;
-mod reconciler;
-
-use crd::DevEnvironment;
-use errors::Result;
-use reconciler::Context;
+use devenv_controller::{crd::DevEnvironment, errors::Result, reconciler::Context};
 
 use futures::StreamExt;
 use kube::{
@@ -38,7 +32,11 @@ async fn main() -> Result<()> {
     let dev_envs = Api::<DevEnvironment>::all(client);
 
     Controller::new(dev_envs, watcher::Config::default())
-        .run(reconciler::reconcile, reconciler::error_policy, context)
+        .run(
+            devenv_controller::reconciler::reconcile,
+            devenv_controller::reconciler::error_policy,
+            context,
+        )
         .for_each(|res| async move {
             match res {
                 Ok(o) => info!("Reconciled: {:?}", o),
